@@ -1,1 +1,28 @@
-Stuff here soon.
+twitterpeeksy is a simple Ruby script that shows the most recent Twitter
+tweets in the console/shell. 
+
+It's not a thing of beauty. I tossed it together for personal use, but
+perhaps one day it'll be less fugly. In the meanwhile, you're welcome to use
+it if you like.
+
+
+Usage
+=====
+
+% twitterpeeksy.rb
+
+
+INSTALLATION
+============
+
+twitterpeeksy requires a ~/.twitterpeeksy config file. In it, place the
+following lines:
+
+user: btanaka
+password: [password goes here]
+source: http://twitter.com/statuses/friends_timeline/806210.rss
+
+Replace the source URI with your timeline's URI. Order matters, at
+the moment.
+
+
