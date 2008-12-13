@@ -56,6 +56,8 @@ end
 # option for number of items
 # show only new tweets option
 # wordwrap
+# support option for viewing replies only
+# support option for viewing direct messages only
 #
 # done:
 # support config file for url and prefs and credentials (~/.twitterpeeksy)
