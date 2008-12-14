@@ -12,12 +12,18 @@ require 'rss/2.0'
 require 'open-uri'
 require 'optparse'
 
-# set the line below to the filepath of your config if not standard
-configfile = File.expand_path('~/.twitterpeeksy')
-
 class Twitterpeeksy
   
   def initialize
+  end
+
+  def get_config()
+    # set the line below to the filepath of your config if not standard
+    configfile = File.expand_path('~/.twitterpeeksy')
+=begin
+  TODO fail properly if dotfile doesn't exist
+=end
+    return configfile
   end
 
   def print_tweet(index, rss)
@@ -33,7 +39,7 @@ class Twitterpeeksy
   	  configarray.push(inputarray[1])
     }
     return configarray
-  end
+  end  
 
 end # twitterpeeksy
 
@@ -42,6 +48,7 @@ end # twitterpeeksy
 #
 
 twitterpeeksy = Twitterpeeksy.new
+configfile = twitterpeeksy.get_config()
 configarray = twitterpeeksy.get_credentials(configfile)
 user = configarray[0]
 password = configarray[1]
@@ -58,16 +65,40 @@ print "\n\n"
 
 #################################################################
 # todo:
-# refactor so it's proper (oo) (pretty kludgey right now)
-# add method that exits if no ~/.twitterpeeksy
-# config file depends on order. uncouple from order.
-# implement getopts
-# option for public timeline
-# option for number of items
-# show only new tweets option
-# wordwrap
-# support option for viewing replies only
-# support option for viewing direct messages only
+=begin
+  TODO config file depends on order. uncouple from order.
+=end
+=begin
+  TODO implement getopts
+=end
+=begin
+  TODO general refactoring defuglification
+=end
+=begin
+  TODO option for public timeline
+=end
+=begin
+  TODO option for number of items
+=end
+=begin
+  TODO show only new tweets option
+=end
+=begin
+  TODO wordwrap
+=end
+=begin
+  TODO support option for viewing replies only
+=end
+=begin
+  TODO support option for viewing direct messages only
+=end
+
 #
 # done:
-# support config file for url and prefs and credentials (~/.twitterpeeksy)
+#
+=begin
+  DONE support config file for url and prefs and credentials (~/.twitterpeeksy)
+=end
+=begin
+  DONE refactor so it's proper (oo) (pretty kludgey right now)
+=end
