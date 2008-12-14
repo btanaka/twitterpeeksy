@@ -15,42 +15,52 @@ require 'optparse'
 # set the line below to the filepath of your config if not standard
 configfile = File.expand_path('~/.twitterpeeksy')
 
-def print_tweet(index, rss)
-  print "> ", rss.items[index].title, "\n\n"
-  #print "(", rss.items[index].date, ")\n\n"
-end
+class Twitterpeeksy
+  
+  def initialize
+  end
 
-def get_credentials(configfile)
-  inputarray = []
-  configarray = []
-  File.open(configfile).each { |line|
-    inputarray = line.split(' ')
-	  configarray.push(inputarray[1])
-  }
-  return configarray
-end
+  def print_tweet(index, rss)
+    print "> ", rss.items[index].title, "\n\n"
+    #print "(", rss.items[index].date, ")\n\n"
+  end
 
-begin
-  configarray = get_credentials(configfile)
-  user = configarray[0]
-  password = configarray[1]
-  source = configarray[2]
-  content = "" # raw content of rss feed will be loaded here
-  open(source, :http_basic_authentication=> [user, password] ) do
-  	|s| content = s.read end
-  rss = RSS::Parser.parse(content, false)
-  print "\n", rss.channel.title, " "
-  print "(", rss.channel.link, ")\n"
-  70.times {print "-"}
-  print "\n"
-  (0..5).each { |i| print_tweet(i, rss) }
-end
+  def get_credentials(configfile)
+    inputarray = []
+    configarray = []
+    File.open(configfile).each { |line|
+      inputarray = line.split(' ')
+  	  configarray.push(inputarray[1])
+    }
+    return configarray
+  end
+
+end # twitterpeeksy
+
+#
+# main
+#
+
+twitterpeeksy = Twitterpeeksy.new
+configarray = twitterpeeksy.get_credentials(configfile)
+user = configarray[0]
+password = configarray[1]
+source = configarray[2]
+content = "" # raw content of rss feed will be loaded here
+open(source, :http_basic_authentication=> [user, password] ) do
+	|s| content = s.read end
+rss = RSS::Parser.parse(content, false)
+print "\n", rss.channel.title, " "
+print "(", rss.channel.link, ")\n"
+74.times {print "-"}
+print "\n\n"
+(0..5).each { |i| twitterpeeksy.print_tweet(i, rss) }
 
 #################################################################
 # todo:
-# config file depends on order. uncouple from order.
 # refactor so it's proper (oo) (pretty kludgey right now)
 # add method that exits if no ~/.twitterpeeksy
+# config file depends on order. uncouple from order.
 # implement getopts
 # option for public timeline
 # option for number of items
