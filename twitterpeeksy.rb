@@ -75,6 +75,9 @@ print "\n\n"
   TODO implement getopts
 =end
 =begin
+  TODO option to see latest 1 tweet by each member or special list (actual friends)
+=end
+=begin
   TODO general refactoring defuglification
 =end
 =begin
