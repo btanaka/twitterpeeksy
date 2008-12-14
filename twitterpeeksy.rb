@@ -69,6 +69,9 @@ print "\n\n"
   TODO config file depends on order. uncouple from order.
 =end
 =begin
+  TODO add post option (possibly prompt after tweets in verbose mode?)
+=end
+=begin
   TODO implement getopts
 =end
 =begin
