@@ -101,6 +101,9 @@ print "\n\n"
 =begin
   TODO support option for viewing direct messages only
 =end
+=begin
+  TODO add "tail -f"/constant scroll option
+=end
 
 #
 # done:
